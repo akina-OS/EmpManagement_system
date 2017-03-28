@@ -9,7 +9,7 @@ import java.util.Properties;
 /***
  * 读取properties文件
  * 
- * @author 王维杰
+ * @author Akina
  *
  */
 public class PropertiesUtils {

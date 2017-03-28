@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServlet;
 /**
  * tomcat启动运行
  * 
- * @author 王维杰
+ * @author Akina
  *
  */
 public class OnloadStart extends HttpServlet {
