@@ -155,5 +155,12 @@ public interface EmployeeMapper {
 	 * 
 	 * @return
 	 */
-	int empVoteStatChange1(@Param("emp_id")Integer emp_id);
+	int empVoteStatChange1(@Param("emp_id") Integer emp_id);
+
+	/***
+	 * 查询投票状态任然为0(还未确认)的员工
+	 * 
+	 * @return
+	 */
+	List<Employee> voteEmp_no();
 }

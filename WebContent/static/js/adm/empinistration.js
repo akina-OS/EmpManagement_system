@@ -253,3 +253,29 @@ function delEmp() {
 	$('#loading').modal('close');
 	getEmpByPage(1);
 }
+
+
+
+
+/*******************************************************************************
+ * 查询投票状态任然为0(还未确认)的员工
+ * 
+ * @returns
+ */
+function getVoteEmp_no() {
+	$('#loading').modal('open');
+	$.post('/hnzs_voteSys/adm/getVoteEmp_no', function(data) {
+// console.log(data);
+		var html = "";
+		for (var i = 0; i < data.length; i++) {
+			html += '<div class="chip">';
+			html += '<img src="'+data[i].empImg+'" alt="Contact Person">'; 
+			html += data[i].empName;
+			html += '</div>';
+		}
+		$("#novote_emp").html(html);
+		$('#loading').modal('close');
+		//打开面板
+		$('#voteEmp_no').modal('open');
+	}, 'json');
+}

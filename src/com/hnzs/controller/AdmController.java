@@ -1,6 +1,7 @@
 package com.hnzs.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -331,5 +332,16 @@ public class AdmController {
 		}
 		opinService.delOpin(opin_id);
 		return "redirect:/adm/gotoOpinion";
+	}
+
+	/***
+	 * 查询投票状态任然为0(还未确认)的员工
+	 * 
+	 * @return
+	 */
+	@ResponseBody
+	@RequestMapping(value = "getVoteEmp_no", method = RequestMethod.POST)
+	public List<Employee> getVoteEmp_no() {
+		return CommonMethod.changeEmpHeadUrl(empService.voteEmp_no());
 	}
 }

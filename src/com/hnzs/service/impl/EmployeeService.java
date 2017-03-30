@@ -243,4 +243,12 @@ public class EmployeeService implements IEmployeeService {
 
 	}
 
+	/***
+	 * 查询投票状态任然为0(还未确认)的员工
+	 */
+	@Override
+	public List<Employee> voteEmp_no() {
+		return empMapping.voteEmp_no();
+	}
+
 }

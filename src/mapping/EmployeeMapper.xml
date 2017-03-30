@@ -256,4 +256,14 @@
 		SET
 		voted_stat = 1 WHERE id = #{emp_id}
 	</update>
+
+
+
+	<!-- 查询投票状态任然为0(还未确认)的员工 -->
+	<select id="voteEmp_no" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM employee WHERE voted_stat = 0
+	</select>
+
 </mapper>

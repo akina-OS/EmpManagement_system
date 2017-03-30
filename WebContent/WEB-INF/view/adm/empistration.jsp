@@ -94,6 +94,16 @@ ul {
 				搜索 </a>
 
 		</div>
+		<br>
+		<div class="row"> 
+			<a  onclick="getVoteEmp_no()"
+				 class=" col s3 offset-s1 waves-effect waves-light btn-large #00b0ff light-blue accent-3">
+				本次投票未确认员工 </a>
+			<a href="#restSys"
+				class=" col s3 offset-s1 waves-effect waves-light btn-large #00b0ff light-blue accent-3">
+				重置系统 </a>
+
+		</div>
 
 
 		<table class="striped ">
@@ -179,6 +189,32 @@ ul {
 	<div id="loading" class="modal">
 		<div class="progress">
 			<div class="indeterminate"></div>
+		</div>
+	</div>
+	<!-- 重置系统提醒 -->
+	<div id="restSys" class="modal">
+		<div class="modal-content">
+			<h4>确认要重置系统吗？</h4>
+			<h5 id="confirm_str">系统重置后，本次投票信息会被移送至年度结算</h5>
+		</div>
+		<div class="modal-footer">
+			<a href="#!"
+				class=" modal-action modal-close waves-effect waves-green btn-flat">取消</a>
+			<a  href="/hnzs_voteSys/admVote/restartSysDate" class="  btn-flat">确认</a>
+		</div>
+	</div>
+	
+	<!-- 本次投票未投员工-->
+	<div id="voteEmp_no" class="modal">
+		<div class="modal-content">
+			<h6>本次投票还没有点击确认的员工</h6>
+			<br><br>
+			<p id="novote_emp">
+			</p>
+		</div>
+		<div class="modal-footer">
+			<a href="#!"
+				class=" modal-action modal-close waves-effect waves-green btn-flat">关闭</a>
 		</div>
 	</div>
 	</main>

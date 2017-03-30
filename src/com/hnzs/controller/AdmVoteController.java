@@ -61,15 +61,14 @@ public class AdmVoteController {
 	 * @param session
 	 * @return
 	 */
-	@ResponseBody
 	@RequestMapping(value = "restartSysDate")
-	public Integer restartSysDate(HttpSession session) {
+	public String restartSysDate(HttpSession session) {
 		// 检查是否登录
 		if (session.getAttribute(StaticStr.SESSION_ADMIN) == null) {
-			return -1;
+			return "redirect:/adm/gotoAdm";
 		}
 		admservice.restartSysDate();
-		return 1;
+		return "redirect:/adm/gotoEmpistr";
 	}
 
 }
