@@ -124,4 +124,14 @@ public interface IEmployeeService {
 	 * @param opn
 	 */
 	public void addOpinion(Opinion opn);
+
+	/****
+	 * 还原员工表剩余票数,所有員工票數改為0，任務調度執行
+	 */
+	public void empVoteReset();
+
+	/***
+	 * 修改投票状态，修改位1确认，确认 投票状态，0未确认，可以修改，1为确认不可修改
+	 */
+	public void empVoteStatChange1(Integer emp_id);
 }

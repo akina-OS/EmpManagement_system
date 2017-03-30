@@ -142,4 +142,18 @@ public interface EmployeeMapper {
 	 * @return List<Employee>
 	 */
 	List<Employee> findVotedByYear(@Param("year") Integer year);
+
+	/****
+	 * 还原员工表剩余票数
+	 * 
+	 * @return
+	 */
+	int empVoteReset();
+
+	/***
+	 * 修改投票状态，修改位1确认，确认 投票状态，0未确认，可以修改，1为确认不可修改
+	 * 
+	 * @return
+	 */
+	int empVoteStatChange1(@Param("emp_id")Integer emp_id);
 }

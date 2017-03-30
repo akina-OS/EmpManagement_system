@@ -24,12 +24,11 @@
 *, *:before, *:after {
 	box-sizing: inherit;
 }
-
 [type="checkbox"]+label:before, [type="checkbox"]:not(.filled-in)+label:after {
     content: '';
     position: absolute;
-    top: 13px;
-    left: 10px;
+    top: 12px;
+    left: 0px;
     width: 18px;
     height: 18px;
     z-index: 0;
@@ -38,26 +37,33 @@
     margin-top: 2px;
     transition: .2s;
 }
-
-
- 
 </style>
 
 
 </head>
 <body>
 	<input hidden value="${loginEmp.id}" id="loginEmpID" />
+	<input hidden value="${loginEmp.votedStat}" id="loginEmpVotedStat" />
 	<header> <%@include file="/static/commonjsp/empHeader.jsp"%></header>
-	<main>
-		<br>
-		<div class="container" id="mianBody">
-				<!-- 页面内容 -->
+	<main> <br>
+		<div class="container">
+			<a href="/hnzs_voteSys/emp/empVoteStatChange1"
+				class="waves-effect waves-light btn light-blue accent-3"> <i
+				class="material-icons left">done</i>确认不改了
+			</a> <a href="/hnzs_voteSys/emp/loginOUt"
+				class="waves-effect waves-light btn light-blue accent-3"> 退出登录 </a>
+
+
+		</div> <br>
+	<div class="container" id="mianBody">
+
+		<!-- 页面内容 -->
+	</div>
+	<div id="loading" class="modal">
+		<div class="progress">
+			<div class="indeterminate"></div>
 		</div>
-		  <div id="loading" class="modal">
-			     <div class="progress">
-			      	<div class="indeterminate"></div>
-			     </div>
-		  </div>
+	</div>
 	</main>
 	<div id="loading" class="modal">
 		<div class="progress">
@@ -65,7 +71,8 @@
 		</div>
 	</div>
 	<%@include file="/static/commonjsp/body.jsp"%>
-	<script type="text/javascript" src="/hnzs_voteSys/static/js/emp/showEmpVote.js"></script>
+	<script type="text/javascript"
+		src="/hnzs_voteSys/static/js/emp/showEmpVote.js"></script>
 	<script type="text/javascript">
 		$(function() {
 			//Materialize.toast("${logmsg}", 4000);

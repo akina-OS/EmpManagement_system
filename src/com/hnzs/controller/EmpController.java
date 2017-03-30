@@ -95,6 +95,7 @@ public class EmpController {
 			model.addAttribute("errormsg", "密码错误");
 			return "emp/login";
 		case 1:
+			System.out.println(bean.getEmp());
 			session.setAttribute(StaticStr.SESSION_EMP, bean.getEmp());
 			// System.out.println(bean.getEmp());
 			// 登陆成功
@@ -111,6 +112,33 @@ public class EmpController {
 			model.addAttribute("errormsg", "系统错误");
 			return "emp/login";
 		}
+	}
+
+	/***
+	 * 修改已登录员工确认状态
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "empVoteStatChange1", method = RequestMethod.GET)
+	public String empVoteStatChange1(HttpSession session) {
+		Employee sessionEmp = (Employee) session.getAttribute(StaticStr.SESSION_EMP);
+		empService.empVoteStatChange1(sessionEmp.getId());
+		sessionEmp.setVotedStat(1);
+		// 重新设置登录用户
+		session.setAttribute(StaticStr.SESSION_EMP, sessionEmp);
+		return "redirect:/emp/gotoEmpVote";
+	}
+
+	/***
+	 * 退出登录
+	 * 
+	 * @param session
+	 * @return
+	 */
+	@RequestMapping(value = "loginOUt", method = RequestMethod.GET)
+	public String loginOUt(HttpSession session) {
+		session.setAttribute(StaticStr.SESSION_EMP, null);
+		return "redirect:/emp/gotoLoginview";
 	}
 
 	/***

@@ -26,7 +26,10 @@ public class StaticStr {
 	/**
 	 * 存放头像路径
 	 */
-	public static String HEAD_DIR = "D:\\code_test\\hnzs_image\\head\\";
+	// public static String HEAD_DIR = "D:\\code_test\\hnzs_image\\head\\";
+
+	// 服务器位置
+	public static String HEAD_DIR = "C:\\netWorkFiles\\head_image\\head";
 
 	/**
 	 * 头像网络访问路径

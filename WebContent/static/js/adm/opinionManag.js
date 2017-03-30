@@ -21,11 +21,15 @@ function getOpinByPage(page) {
 	$.post('/hnzs_voteSys/adm/getOpinDateByPage', {
 		pageNum : page
 	}, function(data) {
-		console.log(data);
-		$("#opinionDate").html(intoHtml(data.dataList));
-		$("#page").html(builPageHtml(data.totalPage, page));
-		$("#count_num").html("一共有  " + data.count + " 条");
-
+		 if(data.dataList.length==0){
+			 $("#opinionDate").html("暂无数据");
+		 }else {
+				$("#opinionDate").html(intoHtml(data.dataList));
+				$("#page").html(builPageHtml(data.totalPage, page));
+				$("#count_num").html("一共有  " + data.count + " 条");
+		}
+		
+		
 		$('#loading').modal('close');
 	}, 'json');
 }
@@ -45,7 +49,9 @@ function intoHtml(date) {
 		opinHtml += "<td>" + date[i].empName + "</td>";
 		if (date[i].opinionStr.length > 14) { 
 			opinionStr = date[i].opinionStr.substring(0, 14)+"..."; 
-		} 
+		} else{
+			opinionStr = date[i].opinionStr; 
+		}
 		opinHtml += "<td><a onclick='showOpinion(\""+date[i].opinionStr+"\")'  class='  light-blue accent-4  waves-effect waves-light btn'>" + opinionStr 　+ "</a></td>";
 
 		// date[i].id;

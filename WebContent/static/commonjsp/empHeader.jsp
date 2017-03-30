@@ -13,7 +13,7 @@
 			src="/hnzs_voteSys/static/image/logo.png" width="60%">
 		<h5 class="header center-on-small-only  "></h5>
 		<div class="row center">
-			<a href="#">员工投票系统 : 测试版 v0.0.1</a>
+			<a href="#">员工投票系统 : 正式版 v0.0.2</a>
 		</div>
 	</div>
 

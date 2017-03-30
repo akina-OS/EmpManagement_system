@@ -231,6 +231,19 @@ public class Employee {
 		this.votedEmpList = votedEmpList;
 	}
 
+	/***
+	 * 投票状态，0未确认，可以修改，1为确认
+	 */
+	private Integer votedStat;
+
+	public Integer getVotedStat() {
+		return votedStat;
+	}
+
+	public void setVotedStat(Integer votedStat) {
+		this.votedStat = votedStat;
+	}
+
 	/**
 	 * 传参数的构造方法
 	 * 
@@ -245,14 +258,13 @@ public class Employee {
 
 	public Employee() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", empName=" + empName + ", empPwd=" + empPwd + ", empImg=" + empImg
 				+ ", empVoteNum=" + empVoteNum + ", initTime=" + initTime + ", votedNum=" + votedNum + ", votedEmpList="
-				+ votedEmpList + "]";
+				+ votedEmpList + ", votedStat=" + votedStat + "]";
 	}
 
 }

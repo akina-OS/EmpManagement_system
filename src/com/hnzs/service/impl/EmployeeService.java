@@ -232,4 +232,15 @@ public class EmployeeService implements IEmployeeService {
 		opinMapping.insertSelective(opn);
 	}
 
+	@Override
+	public void empVoteReset() {
+		empMapping.empVoteReset();
+	}
+
+	@Override
+	public void empVoteStatChange1(Integer emp_id) {
+		empMapping.empVoteStatChange1(emp_id);
+
+	}
+
 }

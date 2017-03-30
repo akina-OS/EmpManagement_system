@@ -24,7 +24,12 @@ function getAllEmp() {
 	$('#loading').modal('open');
 	$.post('/hnzs_voteSys/emp/findAllemp', function(emp_data) {
 		// console.log(emp_data);
-		$("#mianBody").html(builStr(emp_data));
+		// 以确认 投票状态，0未确认，可以修改，1为确认
+		if ($("#loginEmpVotedStat").val() == 1) {
+			$("#mianBody").html(builStrBy(emp_data));
+		} else {
+			$("#mianBody").html(builStr(emp_data));
+		}
 		$('#loading').modal('close');
 	}, 'json');
 }
@@ -44,14 +49,16 @@ function getLoginVoted() {
 }
 
 /*******************************************************************************
- * 构建字符串
+ * 以确认 投票状态，0未确认，可以修改，1为确认
  * 
- * @param emp_data
+ * 
  * @returns
  */
-function builStr(emp_data) {
+function builStrBy(emp_data) {
+	// 已经确认，所以不可修改，只显示已投票的认，而且无法投票，不现实投票按钮
 	var empHtml = '';
 	for (var i = 0; i < emp_data.length; i++) {
+		// 已经选择的人,显示，不显示投票按钮
 		empHtml += '<div class="col s12 m8 offset-m2 l6 offset-l3">';
 		empHtml += '<div class=" card-panel grey lighten-5 z-depth-1  s">';
 		empHtml += '<div class="row valign-wrapper">';
@@ -67,8 +74,59 @@ function builStr(emp_data) {
 		empHtml += '</div>';
 		empHtml += '<div class="col s6">';
 		empHtml += '<span class="black-text  ">';
+		empHtml += '<a >';
+
+		// <a href="#!">二<span class="new badge">1</span>
+
+		empHtml += '得票：' + emp_data[i].votedNum;
+		for (var y = 0; y < emp_vote_list.length; y++) {
+			if (emp_vote_list[y].id == emp_data[i].id) {
+				empHtml += '<span class="new badge" data-badge-caption="已投"></span>';
+			} else {
+				// 不显示
+			}
+		}
+
+		empHtml += '</a>';
+		empHtml += '</span>';
+		empHtml += '</div>';
+		empHtml += '</div>';
+		empHtml += '</div>';
+		empHtml += '</div>';
+	}
+	return empHtml;
+}
+
+/*******************************************************************************
+ * 构建字符串
+ * 
+ * @param emp_data
+ * @returns
+ */
+function builStr(emp_data) {
+	var empHtml = '';
+
+	for (var i = 0; i < emp_data.length; i++) {
+
+		empHtml += '<div class="col s12 m8 offset-m2 l6 offset-l3">';
+		empHtml += '<div class=" card-panel grey lighten-5 z-depth-1  s">';
+		empHtml += '<div class="row valign-wrapper">';
+		empHtml += '<div class="col s3">';
+		empHtml += '<img ';
+		empHtml += '  src="' + emp_data[i].empImg
+				+ '"  class="circle  responsive-img">';
+		empHtml += '</div>';
+		empHtml += '<div class="col s3    valign-wrapper">';
+		empHtml += '<span class="black-text  valign" style="text-align: center;">';
+		empHtml += emp_data[i].empName;
+		empHtml += '</span>';
+		empHtml += '</div>';
+		empHtml += '<div class="col s6">';
+		empHtml += '<span class="black-text  ">';
+
 		empHtml += '<p>';
 		empHtml += '<input  value="' + emp_data[i].id + '" type="checkbox"';
+
 		for (var y = 0; y < emp_vote_list.length; y++) {
 			if (emp_vote_list[y].id == emp_data[i].id) {
 				empHtml += '  checked="checked"   ';

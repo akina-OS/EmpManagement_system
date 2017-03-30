@@ -95,6 +95,8 @@ public class AdminService implements IAdminService {
 		}
 		// 循环结束清空月记录表
 		vote_n_mapping.deleteByAll();
+		// 还原员工表剩余票数
+		empMapping.empVoteReset();
 	}
 
 }
